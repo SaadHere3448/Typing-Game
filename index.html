@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Game</title>
+</head>
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+    .car-img{
+        user-select: none;
+        position: relative;
+    }
+    .road{
+        border: 15px, dashed, black;
+        width: 100%;
+        position: relative;
+        bottom: 30px;
+    }
+</style>
+<body>
+    <audio id="audio-1" src="double-car-horn-352443.mp3"></audio>
+    <audio id="audio-2" src="lamborghini-urus-racing-sound-effect-163336.mp3"></audio>
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8NDQ4NDg0OEA0PDQ8NDw4QDQ8NEg8QFRIWFhURFxUZHSkgGBsmHhcVITEhJSkrLi46Ix8zODMsNygtLisBCgoKDg0OFQ8PFSsdHR0tKy0tLTEtKy0rLzgtLTIrKy0tKy0tLystLSstLSs4LTgrKystNy0uOC4rLSstLSs3N//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABwECBQYIAwT/xABKEAABAwIDAgcLCQYEBwAAAAABAAIDBBEFEiEGMRMyQVFhcZEHFBUiUlRygaGx0iNCYpKTlKLB0RdDU1Wy4SQzg8IWNERjc3Sj/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGhEBAQEBAAMAAAAAAAAAAAAAAAERMQISIf/aAAwDAQACEQMRAD8AnFERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEVFVAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERARLqlxzoKoqKqAiIgIiICIiAiIgIiICIiCiqiICIrJZAxrnuNmtaXOPMALkoL0WrYdtK2uhZVUr3OglBLCGBtrEtIOaxuCCF7msmPzj9e3uCuDYla54G8gdZAWuOllO9/qLnOVrXPHKz6qYmtgNXH5YPo3d7lR1WB813rAZ/UQsGZ5d2bT03N9ll89SHuY9rbte5jg17S1xa4jR3jaadSYazk+KMYC5zo2t8p0lgOwWWEk26oeE4JlZFLLr8lTsdVSfVYSfYoyxnuXzVbzJLiFQ95JN5ZHTgHo8XRa/U9x6rbfg6uld0PzxH3FBN0m0U7rcFQV8gPKe9aQDpIlexy8qjEq4MdIaWkjjY1z3moxN12taCScsbHgnTdcKAqvuV4vGLtgimHPFURn2OIWIqtlsRhdaTDaluW5JbA54uBuu0EIOmKU1U0Ucjn4dC57GvLDnmLCRfKTdtyNy9O8qk/9dhw6O83n28OFyY+nfE60sT2nlD43NPYQrg6P6PYha6vkpKlv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" height="150px" class="car-img" alt="car" id="car">
+    <div class="road" id="road"></div>
+    <script>
+        alert('Press H For Horn\n Press Backspace for Reverse Gear')
+        let car = document.getElementById('car')
+        let log = console.log
+        document.addEventListener('keydown', function(eve){
+            if (eve.code ==='KeyH'){
+                let audio_1 = document.getElementById('audio-1')
+                let audio_2 = document.getElementById('audio-2')
+                audio_2.pause()
+                audio_1.play()
+            }
+            log(eve.code)
+            if (eve.code === 'Backspace'){
+                let audio_2 = document.getElementById('audio-2')
+                audio_2.pause()
+                let style = getComputedStyle(car)
+                let position = style.left.replace('px', '')
+                position = Number(position)
+                position -= 15
+                if (position<= 0){
+                    position = 0
+                }
+                car.style.left = `${position}px`
+            }else{
+                let audio_2 = document.getElementById('audio-2')
+                audio_2.play()
+                let new_style = getComputedStyle(car)
+                let new_pos = new_style.left.replace('px', '')
+                new_pos = Number(new_pos)
+                new_pos += 20
+                if (new_pos >= 1100){
+                    new_pos = 0
+                }
+                car.style.left = `${new_pos}px`
+            }
+        })
+    </script>
+</body>
+</html>
